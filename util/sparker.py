@@ -13,18 +13,19 @@ def get_spark_session():
     return spark
 
 
-def execute_query(spark, report_name, query_name, query):
+def execute_query(spark, report_name, query_name, query, batch_date):
     try:
         logging.info(f'''Running query {query_name} for {report_name}''')
-        spark.sql(query['process.statement'])
+        statement = query['process.statement'].format(batch_date=batch_date)
+        spark.sql(statement)
     except Exception as e:
         logging.error(e)
         raise
 
 
-def execute_report(spark, reports, report_name):
+def execute_report(spark, reports, report_name, batch_date):
     logging.info(f'''Processing data for report {report_name}''')
     report_queries = reports[report_name]
     for query in report_queries:
         for key in query:
-            execute_query(spark, report_name, key, query[key])
+            execute_query(spark, report_name, key, query[key], batch_date)
