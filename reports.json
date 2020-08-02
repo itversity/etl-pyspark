@@ -1,10 +1,11 @@
 {
   "REPORT_1": [
-    {"QUERY_1": {"query": "INSERT OVERWRITE TABLE t SELECT current_date()"}},
-    {"QUERY_2": {"query": "INSERT OVERWRITE TABLE ts SELECT current_timestamp()"}}
+    {"QUERY_1": {"process.statement": "INSERT OVERWRITE TABLE t SELECT current_date()",
+      "process.properties":  [{"spark.sql.shuffle.partitions":  1}]}},
+    {"QUERY_2": {"process.statement": "INSERT OVERWRITE TABLE ts SELECT current_timestamp()"}}
   ],
   "REPORT_2": [
-    {"QUERY_1": {"query": "SELECT current_date()"}},
-    {"QUERY_2": {"query": "SELECT current_timestamp()"}}
+    {"QUERY_1": {"process.statement": "SELECT current_date()"}},
+    {"QUERY_2": {"process.statement": "SELECT current_timestamp()"}}
   ]
 }
