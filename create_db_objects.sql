@@ -7,6 +7,6 @@ CREATE EXTERNAL TABLE airlines.flight_count(FlightDate DATE,
     FlightCount INT,
     DepDelayedCount INT,
     ArrDelayedCount INT
-) PARTITIONED BY (FlightMonth INT)
+) PARTITIONED BY (flightmonth INT)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 LOCATION '/Users/itversity/Research/data/airlines/flight_count';
