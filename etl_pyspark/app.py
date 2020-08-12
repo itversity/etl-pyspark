@@ -1,6 +1,6 @@
 import logging
 
-from etl_pyspark.sparker import get_spark_session, execute_report
+from etl_pyspark.util.sparker import get_spark_session, execute_report
 from etl_pyspark.util import init_logger, load_queries
 
 
