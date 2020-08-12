@@ -1,26 +1,7 @@
 import logging
-import json
 
 from etl_pyspark.sparker import get_spark_session, execute_report
-
-
-def load_queries():
-    with open("etl_pyspark/resources/reports.json") as reports_file:
-        reports = json.load(reports_file)
-    return reports
-
-
-def init_logger():
-    log_formatter = logging.Formatter(
-        '%(asctime)s %(levelname)s %(filename)s %(funcName)s line:%(lineno)d  %(message)s',
-        '[%Y-%m-%d %H:%M:%S]'
-    )
-    root_logger = logging.getLogger()
-    root_logger.setLevel(logging.INFO)
-
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(log_formatter)
-    root_logger.addHandler(console_handler)
+from etl_pyspark.util import init_logger, load_queries
 
 
 def run_job(report_name, batch_month):
