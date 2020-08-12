@@ -31,6 +31,7 @@ def get_spark_session(report_name):
                 enableHiveSupport(). \
                 getOrCreate()
         spark.sparkContext.setLogLevel('ERROR')
+        spark.conf.set('spark.sql.shuffle.partitions', '2')
         spark.conf.set('hive.exec.dynamic.partition.mode', 'nonstrict')
     except Exception as e:
         logging.error(e)
