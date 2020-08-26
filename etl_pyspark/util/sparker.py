@@ -3,10 +3,12 @@ from pyspark.sql import SparkSession
 
 
 def get_environ():
+    """Returns the environment passed using OS environment variable"""
     return os.environ.get('ETL_PYSPARK_ENV')
 
 
 def get_spark_session(report_name):
+    """Build Spark Session Object"""
     etl_pyspark_env = get_environ()
     spark = None
     try:
