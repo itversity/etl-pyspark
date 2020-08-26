@@ -41,6 +41,7 @@ def get_spark_session(report_name):
 
 
 def execute_query(spark, report_name, query_name, query, batch_month):
+    """Executes the query based up on the report and query passed"""
     try:
         logging.info(f'''Running query {query_name} for {report_name}''')
         statement = query.format(batch_month=batch_month)
@@ -51,6 +52,7 @@ def execute_query(spark, report_name, query_name, query, batch_month):
 
 
 def execute_report(spark, reports, report_name, batch_month):
+    """Processes all the queries for a given report"""
     logging.info(f'''Processing data for report {report_name}''')
     report_queries = reports[report_name]
     for query in report_queries:
